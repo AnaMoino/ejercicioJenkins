@@ -3,12 +3,12 @@ pipeline{
     stages{
         stage('Compilacion'){
             steps{
-                sh 'mvn clean package -DskipsTests'
+                bat 'mvn clean package -DskipsTests'
             }
         }
         stage('Pruebas'){
             steps{
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
         stage('Ejecutar:develop'){
@@ -16,7 +16,7 @@ pipeline{
                 branch 'develop'
             }
             steps{
-                sh 'java -jar target/ejercicioJenkins-1.0-SNAPSHOT.jar 2 2'
+                bat 'java -jar target/jenkins-1.0-SNAPSHOT.jar 2 2'
             }
         }
         stage('Ejecutar:master'){
@@ -24,7 +24,7 @@ pipeline{
                 branch 'master'
             }
             steps{
-                sh 'java -jar target/ejercicioJenkins-1.0-SNAPSHOT.jar 5 5'
+                bat 'java -jar target/jenkins-1.0-SNAPSHOT.jar 5 5'
             }
         }
     }
